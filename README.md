@@ -27,7 +27,7 @@ events(document.querySelector('[rel=inputs]'), 'input')
     - `milliseconds` - Integer. The number of milliseconds to debounce the
       stream. Defaults to `100`
     - `immediate` - Boolean. If `true`, the debounced function will call
-      immediately, rather than at the end of input.
+      immediately, rather than at the end of input. Default is `false`.
 
 Returns a duplex stream that accepts values on one end, and emits the debounced
 values on the other.
