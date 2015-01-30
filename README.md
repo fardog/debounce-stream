@@ -9,15 +9,15 @@ Debounces a stream.
 ## Example
 
 ```javascript
-var events = require('dom-event-stream')
+var events = require('dom-delegation-stream')
   , values = require('dom-value-object-stream')
   , debounce = require('stream-debounce')
 
 events(document.querySelector('[rel=inputs]'), 'input')
   .pipe(values()) // values is a stream that progressively updates on user input
-  .pipe(debounce(500)) // only emit the latest value every 500 ms
+  .pipe(debounce(500)) // emit only after a pause of 500 ms
   .on('data', function(data) {
-    console.log(data) // {one: 'One', two: 'Two', three: 'Three'}
+    console.log(data) // the data after a user has stopped typing for 500 ms
   })
 ```
 
