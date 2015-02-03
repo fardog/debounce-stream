@@ -5,10 +5,10 @@ var test = require('tape')
 test('debounces a stream', function(t) {
   t.plan(1)
 
-  var testStream = countStream(5, 50)
+  var testStream = countStream(5, 100)
     , last
 
-  testStream.pipe(debounce(100)).on('data', check)
+  testStream.pipe(debounce(300)).on('data', check)
 
   testStream.on('done', function() {
     last = Date.now()
@@ -17,25 +17,24 @@ test('debounces a stream', function(t) {
   function check() {
     var now = Date.now()
 
-    t.ok(approximately(now - last, 100, 10))
-    t.end()
+    t.ok(approximately(now - last, 300, 10))
   }
 })
 
 test('can be set immediate', function(t) {
   t.plan(1)
 
-  var testStream = countStream(5, 50)
+  var testStream = countStream(5, 100)
     , firstPass = true
     , last = Date.now()
 
-  testStream.pipe(debounce(100, true)).on('data', check)
+  testStream.pipe(debounce(300, true)).on('data', check)
 
   function check() {
     var now = Date.now()
 
     if(firstPass) {
-      t.ok(approximately(now - last, 50, 10))
+      t.ok(approximately(now - last, 100, 10))
       firstPass = false
 
       return
