@@ -4,7 +4,7 @@
   "description": "Debounces a stream.",
   "main": "index.js",
   "scripts": {
-    "test": "tape test.js"
+    "test": "tape test.js && browserify test.js | jsdom-eval"
   },
   "repository": {
     "type": "git",
@@ -26,6 +26,8 @@
     "through": "^2.3.6"
   },
   "devDependencies": {
+    "browserify": "^8.1.3",
+    "jsdom-eval": "^0.2.5",
     "tape": "^3.4.0"
   }
 }
