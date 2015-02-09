@@ -32,11 +32,6 @@ events(document.querySelector('[rel=inputs]'), 'input')
 Returns a duplex stream that accepts values on one end, and emits the debounced
 values on the other.
 
-## Events
-
-- Emits a `data` event as any good stream should, with a key/value object, where
-  the keys are the element names, and the value is the value of that element.
-
 ## License
 
 MIT. See [LICENSE](./LICENSE) for details.
