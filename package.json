@@ -1,6 +1,6 @@
 {
   "name": "stream-debounce",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Debounces a stream.",
   "main": "index.js",
   "scripts": {
