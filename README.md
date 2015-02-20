@@ -1,9 +1,9 @@
-# stream-debounce
+# debounce-stream
 
 Debounces a stream.
 
-[![Build Status](http://img.shields.io/travis/fardog/stream-debounce/master.svg?style=flat)](https://travis-ci.org/fardog/stream-debounce)
-[![npm install](http://img.shields.io/npm/dm/stream-debounce.svg?style=flat)](https://www.npmjs.org/package/stream-debounce)
+[![Build Status](http://img.shields.io/travis/fardog/debounce-stream/master.svg?style=flat)](https://travis-ci.org/fardog/debounce-stream)
+[![npm install](http://img.shields.io/npm/dm/debounce-stream.svg?style=flat)](https://www.npmjs.org/package/debounce-stream)
 
 
 ## Example
@@ -11,7 +11,7 @@ Debounces a stream.
 ```javascript
 var events = require('dom-delegation-stream')
   , values = require('dom-value-object-stream')
-  , debounce = require('stream-debounce')
+  , debounce = require('debounce-stream')
 
 events(document.querySelector('[rel=inputs]'), 'input')
   .pipe(values()) // values is a stream that progressively updates on user input
