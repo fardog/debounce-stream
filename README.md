@@ -32,6 +32,15 @@ events(document.querySelector('[rel=inputs]'), 'input')
 Returns a duplex stream that accepts values on one end, and emits the debounced
 values on the other.
 
+## Notes
+
+This module which was previously known as `stream-debounce` is now known as
+`debounce-stream`. Thanks to [RangerMauve][rangermauve] for allowing this
+module to take over that name! The version was bumped to v2.0.0 for the name
+change, and to ensure compatibility for users of the old version.
+
 ## License
 
 MIT. See [LICENSE](./LICENSE) for details.
+
+[rangermauve]: https://github.com/RangerMauve
