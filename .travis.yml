@@ -1,5 +1,13 @@
 language: node_js
+sudo: required
 node_js:
   - "0.10"
+  - "0.12"
+  - "iojs"
+  - "4"
 before_install:
   - "npm install -g npm"
+  - "wget https://s3.amazonaws.com/travis-phantomjs/phantomjs-2.0.0-ubuntu-12.04.tar.bz2"
+  - "tar -xjf phantomjs-2.0.0-ubuntu-12.04.tar.bz2"
+  - "sudo rm -rf /usr/local/phantomjs/bin/phantomjs"
+  - "sudo mv phantomjs /usr/local/phantomjs/bin/phantomjs"

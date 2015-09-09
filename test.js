@@ -1,40 +1,40 @@
 var test = require('tape')
-  , through = require('through')
-  , debounce = require('./index')
+var through = require('through')
+var debounce = require('./index')
 
-test('debounces a stream', function(t) {
+test('debounces a stream', function (t) {
   t.plan(1)
 
   var testStream = countStream(5, 100)
-    , last
+  var last
 
   testStream.pipe(debounce(300)).on('data', check)
 
-  testStream.on('done', function() {
+  testStream.on('done', function () {
     last = Date.now()
   })
 
-  function check() {
+  function check () {
     var now = Date.now()
 
-    t.ok(approximately(now - last, 300, 10))
+    t.ok(approximately(now - last, 300, 20))
   }
 })
 
-test('can be set immediate', function(t) {
+test('can be set immediate', function (t) {
   t.plan(1)
 
   var testStream = countStream(5, 100)
-    , firstPass = true
-    , last = Date.now()
+  var firstPass = true
+  var last = Date.now()
 
   testStream.pipe(debounce(300, true)).on('data', check)
 
-  function check() {
+  function check () {
     var now = Date.now()
 
-    if(firstPass) {
-      t.ok(approximately(now - last, 100, 10))
+    if (firstPass) {
+      t.ok(approximately(now - last, 100, 20))
       firstPass = false
 
       return
@@ -44,11 +44,11 @@ test('can be set immediate', function(t) {
   }
 })
 
-function countStream(total, _ms) {
+function countStream (total, _ms) {
   var stream = through()
-    , ms = _ms || 50
-    , count = 0
-    , interval
+  var ms = _ms || 50
+  var count = 0
+  var interval
 
   stream.cancel = cancel
 
@@ -56,26 +56,25 @@ function countStream(total, _ms) {
 
   return stream
 
-  function emit() {
+  function emit () {
     stream.queue(Math.random())
     ++count
 
-    if(count < total) {
+    if (count < total) {
       interval = setTimeout(emit, ms)
-    }
-    else {
+    } else {
       stream.emit('done')
     }
   }
 
-  function cancel() {
+  function cancel () {
     clearTimeout(interval)
   }
 }
 
-function approximately(number, compare, skew) {
+function approximately (number, compare, skew) {
   var lower = compare - skew
-    , upper = compare + skew
+  var upper = compare + skew
 
   return lower < number && number < upper
 }
